@@ -6,6 +6,7 @@ const Wrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 44px;
   /* justify-content: center; */
 `;
 
@@ -20,7 +21,7 @@ const List = styled.ul`
 
 //ListItem
 const ListItem = styled.li`
-  margin-right: 15px;
+  margin-right: 14px;
 `;
 
 //Link
@@ -33,7 +34,7 @@ const Link = styled.a`
 
 //Copyright
 const Copyright = styled.div`
-  margin-left: 150px;
+  margin-left: 130px;
   font-size: 12px;
   color: ${props => props.theme.greyColor};
 `;
