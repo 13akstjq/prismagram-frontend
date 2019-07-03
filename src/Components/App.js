@@ -8,9 +8,9 @@ import Client from "../Apollo/Client";
 
 export default () => (
   <ThemeProvider theme={Theme}>
-    <ApolloProvider client={Client}>
+    <>
       <GlobalStyles />
       <AppRouter isLoggedIn={!true} />
-    </ApolloProvider>
+    </>
   </ThemeProvider>
 );
