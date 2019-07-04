@@ -10,12 +10,22 @@ const Container = styled.input`
   color: ${props => props.theme.blackColor};
 `;
 
-const Input = ({ placeholder, required = true }) => (
-  <Container placeholder={placeholder} required={required} />
+const Input = ({ placeholder, required = true, value, type, onChange }) => (
+  <Container
+    placeholder={placeholder}
+    required={required}
+    value={value}
+    type={type}
+    onChange={onChange}
+  />
 );
 
 Input.propTypes = {
-  placeholder: PropTypes.string.isRequired
+  placeholder: PropTypes.string.isRequired,
+  required: PropTypes.bool,
+  value: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  onChange: PropTypes.func.isRequired
 };
 
 export default Input;

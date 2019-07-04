@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Input from "../Components/Input";
 import Button from "../Components/Button";
+import useInput from "../Hooks/useInput";
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -63,22 +64,25 @@ const Help = styled.p`
 `;
 export default () => {
   const [action, setAction] = useState("logIn");
+  const username = useInput("");
+  const email = useInput("");
+  const fullName = useInput("");
+
+  console.log(username, email, fullName);
   //   console.log(action);
   return (
     <Wrapper>
       <Form>
         {action === "logIn" ? (
           <form>
-            <Input placeholder={"전화번호, 사용자 이름 또는 이메일"} />
-            <Input placeholder={"비밀번호"} />
+            <Input placeholder={"휴대폰 번호 또는 이메일 주소"} {...email} />
             <Button text={"로그인"} />
           </form>
         ) : (
           <form>
-            <Input placeholder={"휴대폰 번호 또는 이메일 주소"} />
-            <Input placeholder={"성명"} />
-            <Input placeholder={"사용자 이름"} />
-            <Input placeholder={"비밀번호"} />
+            <Input placeholder={"휴대폰 번호 또는 이메일 주소"} {...email} />
+            <Input placeholder={"성명"} {...fullName} />
+            <Input placeholder={"사용자 이름"} {...username} />
             <Button text={"가입"} />
             <Help>
               가입하면 Instagram의{" "}
