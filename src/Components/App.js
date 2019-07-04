@@ -17,9 +17,10 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 30px auto 0;
+  margin: auto;
   max-width: 935px;
   width: 100%;
+  height: 100vh;
 `;
 export default () => {
   const {

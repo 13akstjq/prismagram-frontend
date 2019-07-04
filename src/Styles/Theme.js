@@ -8,7 +8,7 @@ export default {
   lightGreyColor: "#999",
   redColor: "#ED4956",
   blueColor: "#3897f0",
-  boxBorder: "border: 1px solid #e6e6e6;",
+  boxBorder: "1px solid #e6e6e6;",
   boxRadius: "4px",
   whiteBox: `
         ${BOX_BORDER}
