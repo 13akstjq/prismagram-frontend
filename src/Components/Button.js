@@ -9,6 +9,7 @@ const Container = styled.button`
   color: white;
 `;
 
+
 const Button = ({ text }) => {
   return <Container>{text}</Container>;
 };

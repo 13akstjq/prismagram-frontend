@@ -10,6 +10,7 @@ export default {
   blueColor: "#3897f0",
   boxBorder: "1px solid #e6e6e6;",
   boxRadius: "4px",
+  focusBorder : "1px solid #E9E9E9",
   whiteBox: `
         ${BOX_BORDER}
         ${BOX_RADIUS}
