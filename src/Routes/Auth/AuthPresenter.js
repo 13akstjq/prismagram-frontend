@@ -68,19 +68,19 @@ export default ({
   email,
   firstName,
   lastName,
-  onLogIn
+  onSubmit
 }) => {
   //   console.log(action);
   return (
     <Wrapper>
       <Form>
         {action === "logIn" ? (
-          <form onSubmit={onLogIn}>
+          <form onSubmit={onSubmit}>
             <Input placeholder={"휴대폰 번호 또는 이메일 주소"} {...email} />
             <Button text={"로그인"} />
           </form>
         ) : (
-          <form onSubmit={onLogIn}>
+          <form onSubmit={onSubmit}>
             <Input placeholder={"휴대폰 번호 또는 이메일 주소"} {...email} />
             <Input placeholder={"성"} {...lastName} />
             <Input placeholder={"이름"} {...firstName} />

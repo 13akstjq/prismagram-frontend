@@ -1,4 +1,6 @@
 import React from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import GlobalStyles from "../Styles/GlobalStyles";
 import styled, { ThemeProvider } from "styled-components";
 import Theme from "../Styles/Theme";
@@ -32,6 +34,7 @@ export default () => {
         <GlobalStyles />
         <AppRouter isLoggedIn={isLoggedIn} />
         <Footer />
+        <ToastContainer position={"bottom-left"} />
       </Wrapper>
     </ThemeProvider>
   );

@@ -5,3 +5,35 @@ export const LON_IN = gql`
     requestSecret(email: $email)
   }
 `;
+
+// export const CREATE_ACCOUNT = gql`
+//   mutation createAccount(
+//     $email: String!
+//     $username: String!
+//     $firstName: String
+//     $lastName: String
+//   ) {
+//     createAccount(
+//       email: $email
+//       username: $username
+//       firstName: $firstName
+//       lastName: $lastName
+//     )
+//   }
+// `;
+
+export const CREATE_ACCOUNT = gql`
+  mutation createAccount(
+    $email: String!
+    $username: String!
+    $firstName: String!
+    $lastName: String!
+  ) {
+    createAccount(
+      email: $email
+      username: $username
+      firstName: $firstName
+      lastName: $lastName
+    )
+  }
+`;
