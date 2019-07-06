@@ -4,10 +4,12 @@ import "react-toastify/dist/ReactToastify.css";
 import GlobalStyles from "../Styles/GlobalStyles";
 import styled, { ThemeProvider } from "styled-components";
 import Theme from "../Styles/Theme";
-import AppRouter from "./AppRouter";
+import AppRouter from "./Routes";
 import { gql } from "apollo-boost";
 import { useQuery } from "react-apollo-hooks";
 import Footer from "./Footer";
+import Header from "./Header";
+import { HashRouter as Router } from "react-router-dom";
 
 const QUERY = gql`
   {
@@ -32,8 +34,11 @@ export default () => {
     <ThemeProvider theme={Theme}>
       <Wrapper>
         <GlobalStyles />
-        <AppRouter isLoggedIn={isLoggedIn} />
-        <Footer />
+        <Router>
+          <Header />
+          <AppRouter isLoggedIn={isLoggedIn} />
+          <Footer />
+        </Router>
         <ToastContainer position={"bottom-left"} />
       </Wrapper>
     </ThemeProvider>
