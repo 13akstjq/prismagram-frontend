@@ -37,8 +37,8 @@ export default () => {
         <Router>
           <Header />
           <AppRouter isLoggedIn={isLoggedIn} />
-          <Footer />
         </Router>
+        <Footer />
         <ToastContainer position={"bottom-left"} />
       </Wrapper>
     </ThemeProvider>

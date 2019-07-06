@@ -1,9 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import { gql } from "apollo-boost";
 import { Link, withRouter } from "react-router-dom";
 import { Logo, Compass, User, Heart } from "./Icons";
 import Input from "./Input";
 import useInput from "../Hooks/useInput";
+import { useQuery } from "react-apollo-hooks";
 const HeaderWrapper = styled.div`
   ${props => props.theme.whiteBox};
   border: ${props => props.theme.boxBorder};
@@ -35,9 +37,21 @@ const MenuItem = styled.li`
   margin-right: 21px;
 `;
 
+const ME = gql`
+  {
+    me {
+      user {
+        username
+      }
+    }
+  }
+`;
+
 export default withRouter(({ history }) => {
   const search = useInput("", "text");
-
+  const {
+    data: { me }
+  } = useQuery(ME);
   const onSubmit = e => {
     e.preventDefault();
     history.push(`/search?term=${search.value}`);
@@ -67,9 +81,15 @@ export default withRouter(({ history }) => {
           </Link>
         </MenuItem>
         <MenuItem>
-          <Link to="/profile">
-            <User />
-          </Link>
+          {!me ? (
+            <Link to="/profile">
+              <User />
+            </Link>
+          ) : (
+            <Link to={me.user.username}>
+              <User />
+            </Link>
+          )}
         </MenuItem>
       </MenuList>
     </HeaderWrapper>
