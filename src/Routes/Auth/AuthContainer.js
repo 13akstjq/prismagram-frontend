@@ -3,7 +3,12 @@ import { toast } from "react-toastify";
 import useInput from "../../Hooks/useInput";
 import AuthPresenter from "./AuthPresenter";
 import { useMutation } from "react-apollo-hooks";
-import { LON_IN, CREATE_ACCOUNT, CONFIRM_SECRET } from "./AuthQueries";
+import {
+  LON_IN,
+  CREATE_ACCOUNT,
+  CONFIRM_SECRET,
+  LOCAL_LOG_IN
+} from "./AuthQueries";
 
 export default () => {
   const [action, setAction] = useState("logIn");
@@ -34,6 +39,7 @@ export default () => {
     }
   });
 
+  const logInMutation = useMutation(LOCAL_LOG_IN);
   const onSubmit = async e => {
     e.preventDefault();
     if (email.value !== "") {
@@ -80,10 +86,14 @@ export default () => {
         }
       } else if (action === "confirm") {
         try {
-          const { data: confirmSecret } = await confirmSecretMutation();
-          console.log(confirmSecret);
-          if (confirmSecret) {
+          const {
+            data: { confirmSecret: token }
+          } = await confirmSecretMutation();
+          console.log(token);
+          if (token !== "" && token !== undefined) {
             toast.success("Success confirm secret!! ");
+            //to do login
+            logInMutation();
           } else {
             toast.error("Paste your correct scret!!");
           }
