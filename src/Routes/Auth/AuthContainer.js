@@ -91,9 +91,9 @@ export default () => {
           } = await confirmSecretMutation();
           console.log(token);
           if (token !== "" && token !== undefined) {
-            toast.success("Success confirm secret!! ");
             //to do login
-            logInMutation();
+            await logInMutation({ variables: { token } });
+            toast.success("Success confirm secret!! ");
           } else {
             toast.error("Paste your correct scret!!");
           }

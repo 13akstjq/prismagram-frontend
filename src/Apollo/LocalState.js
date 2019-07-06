@@ -5,13 +5,16 @@ export const defaults = {
 export const resolvers = {
   Mutation: {
     logUserIn: (_, { token }, { cache }) => {
-      localStorage.setItem("token", token);
-      cache.writeData({
-        data: {
-          isLoggedIn: true
-        }
-      });
-      return null;
+      if (token !== "" && token !== undefined) {
+        localStorage.setItem("token", token);
+        cache.writeData({
+          data: {
+            isLoggedIn: true
+          }
+        });
+        return true;
+      }
+      return false;
     },
     logUserOut: (_, __, { cache }) => {
       localStorage.removeItem("token");
