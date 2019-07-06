@@ -6,22 +6,6 @@ export const LON_IN = gql`
   }
 `;
 
-// export const CREATE_ACCOUNT = gql`
-//   mutation createAccount(
-//     $email: String!
-//     $username: String!
-//     $firstName: String
-//     $lastName: String
-//   ) {
-//     createAccount(
-//       email: $email
-//       username: $username
-//       firstName: $firstName
-//       lastName: $lastName
-//     )
-//   }
-// `;
-
 export const CREATE_ACCOUNT = gql`
   mutation createAccount(
     $email: String!
@@ -35,5 +19,11 @@ export const CREATE_ACCOUNT = gql`
       firstName: $firstName
       lastName: $lastName
     )
+  }
+`;
+
+export const CONFIRM_SECRET = gql`
+  mutation confirmSecret($secret: String!, $email: String!) {
+    confirmSecret(secret: $secret, email: $email)
   }
 `;

@@ -68,18 +68,20 @@ export default ({
   email,
   firstName,
   lastName,
+  secret,
   onSubmit
 }) => {
   //   console.log(action);
   return (
     <Wrapper>
       <Form>
-        {action === "logIn" ? (
+        {action === "logIn" && (
           <form onSubmit={onSubmit}>
             <Input placeholder={"휴대폰 번호 또는 이메일 주소"} {...email} />
             <Button text={"로그인"} />
           </form>
-        ) : (
+        )}
+        {action === "signUp" && (
           <form onSubmit={onSubmit}>
             <Input placeholder={"휴대폰 번호 또는 이메일 주소"} {...email} />
             <Input placeholder={"성"} {...lastName} />
@@ -112,14 +114,21 @@ export default ({
             </Help>
           </form>
         )}
+        {action === "confirm" && (
+          <form onSubmit={onSubmit}>
+            <Input placeholder={"paste your secret"} required {...secret} />
+            <Button text={"확인"} />
+          </form>
+        )}
       </Form>
 
-      {action === "logIn" ? (
+      {action === "logIn" && (
         <StateChanger>
           계정이 없으신가요?{" "}
           <StateLink onClick={() => setAction("signUp")}>가입하기</StateLink>
         </StateChanger>
-      ) : (
+      )}
+      {action === "signUp" && (
         <StateChanger>
           계정이 있으신가요?{" "}
           <StateLink onClick={() => setAction("logIn")}>로그인</StateLink>
