@@ -1,10 +1,22 @@
 import React from "react";
-import styled from "styled-components";
-import { Logo } from "../Components/Icons";
-const Loader = styled.div``;
+import styled, { keyframes } from "styled-components";
+import { Spinner } from "../Components/Icons";
+
+const Animation = keyframes`
+   from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+const Loader = styled.div`
+  animation: ${Animation} 1s linear infinite;
+`;
 
 export default () => (
   <Loader>
-    <Logo size={50} />
+    <Spinner size={50} />
   </Loader>
 );
