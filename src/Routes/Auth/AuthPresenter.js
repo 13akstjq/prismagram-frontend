@@ -117,7 +117,7 @@ export default ({
       {action === "logIn" ? (
         <StateChanger>
           계정이 없으신가요?{" "}
-          <StateLink onClick={() => setAction("SignUp")}>가입하기</StateLink>
+          <StateLink onClick={() => setAction("signUp")}>가입하기</StateLink>
         </StateChanger>
       ) : (
         <StateChanger>
