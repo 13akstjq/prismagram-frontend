@@ -8,7 +8,7 @@ const Animation = keyframes`
   }
   to {
     transform: rotate(360deg);
-  }
+  } 
 `;
 
 const Loader = styled.div`

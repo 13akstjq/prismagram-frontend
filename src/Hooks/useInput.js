@@ -8,7 +8,6 @@ export default (defaultValue, type = "text") => {
       target: { value }
     } = e;
     setValue(value);
-    // console.log(value);
   };
   return { value, onChange, type };
 };

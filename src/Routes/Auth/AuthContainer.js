@@ -40,6 +40,7 @@ export default () => {
   });
 
   const logInMutation = useMutation(LOCAL_LOG_IN);
+
   const onSubmit = async e => {
     e.preventDefault();
     if (email.value !== "") {
