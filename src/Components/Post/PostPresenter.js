@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Textarea from "react-textarea-autosize";
 import FatText from "../FatText";
 import Avatar from "../Avatar";
 import { HeartFull, Heart, CommentBubble, UploadCloud } from "../Icons";
@@ -56,6 +57,7 @@ const CommentItems = styled.div`
   display: flex;
   &:last-child {
     padding-bottom: 7px;
+    border-bottom: ${props => props.theme.boxBorder};
   }
 `;
 const CommentId = styled.div`
@@ -69,6 +71,18 @@ const CommentHeart = styled.div`
   position: absolute;
   right: 10px;
   cursor: pointer;
+`;
+
+const AutoSizeTextArea = styled(Textarea)`
+  margin: 0px;
+  padding: 10px 16px;
+  height: 56px;
+  width: 100%;
+  border: none;
+  resize: none;
+  &:focus {
+    outline: none;
+  }
 `;
 
 export default ({
@@ -120,7 +134,7 @@ export default ({
           </CommentItems>
         ))}
       </CommentList>
-      <textarea />
+      <AutoSizeTextArea placeholder={"댓글 달기..."} />
     </Post>
   );
 };
