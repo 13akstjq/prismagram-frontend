@@ -4,6 +4,7 @@ import { gql } from "apollo-boost";
 import { useQuery } from "react-apollo-hooks";
 import Loader from "../Components/Loader";
 import Post from "../Components/Post";
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;

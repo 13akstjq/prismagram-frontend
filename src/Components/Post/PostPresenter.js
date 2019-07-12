@@ -7,15 +7,21 @@ import { HeartFull, Heart, CommentBubble, UploadCloud } from "../Icons";
 const Post = styled.div`
   ${props => props.theme.whiteBox};
   margin-top: 100px;
-  /* height: 60px;
-  width: 600px; */
+  width: 600px;
 `;
 
-const File = styled.img`
-    width : 100%;
-  /* width: 100%;
+const Files = styled.div`
+  position: relative;
   height: 600px;
-  background-image: url(${props => props.url}); */
+`;
+
+const File = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 600px;
+  background-image: url(${props => props.url});
+  opacity: ${props => (props.showing ? 1 : 0)};
+  transition: opacity 0.5s linear;
 `;
 
 const Header = styled.div`
@@ -35,8 +41,6 @@ const Location = styled.div`
   margin-top: 6px;
   display: block;
 `;
-
-const Photos = styled.div``;
 
 const Meta = styled.div`
   display: flex;
@@ -85,6 +89,11 @@ const AutoSizeTextArea = styled(Textarea)`
   }
 `;
 
+const LikeCount = styled.div`
+  padding: 7px 16px;
+  font-size: 14px;
+`;
+
 export default ({
   location,
   caption,
@@ -95,9 +104,10 @@ export default ({
   likeCount,
   setisLiked,
   setLikeCountS,
-  commentInput
+  commentInput,
+  currentItem
 }) => {
-  console.log(comments);
+  console.log(currentItem);
   return (
     <Post>
       <Header>
@@ -107,11 +117,11 @@ export default ({
           <Location>{location}</Location>
         </UserColumn>
       </Header>
-      <Photos>
-        {files.map(file => (
-          <File key={file.id} src={file.url} />
+      <Files>
+        {files.map((file, index) => (
+          <File key={file.id} url={file.url} showing={currentItem === index} />
         ))}
-      </Photos>
+      </Files>
       <Meta>
         <Button>{!isLiked ? <HeartFull /> : <Heart />}</Button>
         <Button>
@@ -121,6 +131,9 @@ export default ({
           <UploadCloud />
         </Button>
       </Meta>
+      <LikeCount>
+        <FatText text={`${likeCount} Likes`} />
+      </LikeCount>
       <CommentList>
         {comments.map(comment => (
           <CommentItems key={comment.id}>
