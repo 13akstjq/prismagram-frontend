@@ -3,9 +3,11 @@ import styled from "styled-components";
 import FatText from "../../Components/FatText";
 import Loader from "../../Components/Loader";
 import UserCard from "../../Components/UserCard";
+import PostCard from "../../Components/PostCard";
+import HorizontalLine from "../../Components/HorizontalLine";
 
 const Wrapper = styled.div`
-  height: 50vh;
+  min-height: 50vh;
   /* text-align: center; */
   width: 100%;
   display: flex;
@@ -21,8 +23,7 @@ const Section = styled.div`
 `;
 
 export default ({ term, data, loading }) => {
-  console.log(term, data, loading);
-
+  // console.log(data.searchPost);
   if (term === undefined) {
     return (
       <Wrapper>
@@ -56,11 +57,20 @@ export default ({ term, data, loading }) => {
             ))}
           </Section>
         )}
-
+        <HorizontalLine />
         {data.searchPost.length === 0 ? (
           <FatText text={"no match Post"} />
         ) : (
-          <Section>{/* <FatText text={"Post"} /> */}</Section>
+          <Section>
+            {data.searchPost.map(post => (
+              <PostCard
+                key={post.id}
+                url={post.files[0].url}
+                likeCount={post.likeCount}
+                commentCount={post.commentCount}
+              />
+            ))}
+          </Section>
         )}
       </Wrapper>
     );

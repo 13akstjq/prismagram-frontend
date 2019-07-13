@@ -43,7 +43,6 @@ const SEE_FEED = gql`
 
 export default () => {
   const { data, loading } = useQuery(SEE_FEED);
-  console.log(data);
   return (
     <Wrapper>
       {loading && <Loader />}
