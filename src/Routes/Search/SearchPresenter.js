@@ -47,6 +47,7 @@ export default ({ term, data, loading }) => {
             {data.searchUser.map(user => (
               <UserCard
                 key={user.id}
+                id={user.id}
                 username={user.username}
                 avatar={user.avatar}
                 isFollowing={user.isFollowing}

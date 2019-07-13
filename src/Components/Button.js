@@ -15,12 +15,12 @@ const Container = styled.button`
   padding: 6px 10px;
 `;
 
-const Button = ({ text }) => {
-  return <Container>{text}</Container>;
-};
-
+const Button = ({ text, onClick }) => (
+  <Container onClick={onClick}>{text}</Container>
+);
 Button.propTypes = {
   text: PropTypes.string.isRequired
+  // onClick: PropTypes.func.isRequired
 };
 
 export default Button;

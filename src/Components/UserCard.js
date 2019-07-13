@@ -2,8 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Avatar from "./Avatar";
 import FatText from "./FatText";
-import Button from "./Button";
-
+import FollowButton from "./FollowButton";
 const Wrapper = styled.div`
   width: 176px;
   height: 198px;
@@ -14,11 +13,15 @@ const Wrapper = styled.div`
   justify-content: space-around;
 `;
 
-export default ({ username, avatar, isFollowing, isSelf }) => (
+export default ({ id, username, avatar, isFollowing, isSelf }) => (
   <Wrapper>
     <Avatar size={"md"} url={avatar} />
     <FatText text={`${username}`} />
     {!isSelf &&
-      (isFollowing ? <Button text={"unFollow"} /> : <Button text={"Follow"} />)}
+      (isFollowing ? (
+        <FollowButton isFollowing={isFollowing} id={id} />
+      ) : (
+        <FollowButton isFollowing={isFollowing} id={id} />
+      ))}
   </Wrapper>
 );
