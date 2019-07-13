@@ -4,7 +4,7 @@ import Feed from "../Routes/Feed";
 import Auth from "../Routes/Auth";
 import PropType from "prop-types";
 import Explore from "../Routes/Explore";
-import Search from "./Search";
+import Search from "../Routes/Search";
 import Profile from "../Routes/Profile";
 import Notifications from "../Routes/Notifications";
 const LogedInRouter = () => (

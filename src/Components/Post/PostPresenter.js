@@ -3,7 +3,11 @@ import styled from "styled-components";
 import Textarea from "react-textarea-autosize";
 import FatText from "../FatText";
 import Avatar from "../Avatar";
-import { HeartFull, Heart, CommentBubble, UploadCloud } from "../Icons";
+import { HeartFull, HeartEmpty, CommentBubble, UploadCloud } from "../Icons";
+import Loader from "../Loader";
+
+const Wrapper = styled.div``;
+
 const Post = styled.div`
   ${props => props.theme.whiteBox};
   margin-top: 100px;
@@ -105,49 +109,77 @@ export default ({
   setisLiked,
   setLikeCountS,
   commentInput,
-  currentItem
+  currentItem,
+  toggleLike,
+  onKeyPress,
+  selfComments,
+  loading
 }) => {
-  console.log(currentItem);
   return (
-    <Post>
-      <Header>
-        <Avatar size={"sm"} url={avatar} />
-        <UserColumn>
-          <FatText text={username} />
-          <Location>{location}</Location>
-        </UserColumn>
-      </Header>
-      <Files>
-        {files.map((file, index) => (
-          <File key={file.id} url={file.url} showing={currentItem === index} />
-        ))}
-      </Files>
-      <Meta>
-        <Button>{!isLiked ? <HeartFull /> : <Heart />}</Button>
-        <Button>
-          <CommentBubble />
-        </Button>
-        <Button>
-          <UploadCloud />
-        </Button>
-      </Meta>
-      <LikeCount>
-        <FatText text={`${likeCount} Likes`} />
-      </LikeCount>
-      <CommentList>
-        {comments.map(comment => (
-          <CommentItems key={comment.id}>
-            <CommentId>
-              <FatText text={comment.user.username} />
-            </CommentId>
-            <CommentText>{comment.text}</CommentText>
-            <CommentHeart>
-              <Heart size={11} />
-            </CommentHeart>
-          </CommentItems>
-        ))}
-      </CommentList>
-      <AutoSizeTextArea placeholder={"댓글 달기..."} />
-    </Post>
+    <Wrapper>
+      {loading && <Loader />}
+      <Post>
+        <Header>
+          <Avatar size={"sm"} url={avatar} />
+          <UserColumn>
+            <FatText text={username} />
+            <Location>{location}</Location>
+          </UserColumn>
+        </Header>
+        <Files>
+          {files.map((file, index) => (
+            <File
+              key={file.id}
+              url={file.url}
+              showing={currentItem === index}
+            />
+          ))}
+        </Files>
+        <Meta>
+          <Button onClick={toggleLike}>
+            {isLiked ? <HeartFull /> : <HeartEmpty />}
+          </Button>
+          <Button>
+            <CommentBubble />
+          </Button>
+          <Button>
+            <UploadCloud />
+          </Button>
+        </Meta>
+        <LikeCount>
+          <FatText text={`${likeCount} Likes`} />
+        </LikeCount>
+        <CommentList>
+          {comments.map(comment => (
+            <CommentItems key={comment.id}>
+              <CommentId>
+                <FatText text={comment.user.username} />
+              </CommentId>
+              <CommentText>{comment.text}</CommentText>
+              <CommentHeart>
+                <HeartEmpty size={11} />
+              </CommentHeart>
+            </CommentItems>
+          ))}
+          {selfComments.map(comment => (
+            <CommentItems key={comment.id}>
+              <CommentId>
+                <FatText text={comment.user.username} />
+              </CommentId>
+              <CommentText>{comment.text}</CommentText>
+              <CommentHeart>
+                <HeartEmpty size={11} />
+              </CommentHeart>
+            </CommentItems>
+          ))}
+        </CommentList>
+        <AutoSizeTextArea
+          onKeyPress={onKeyPress}
+          placeholder={"댓글 달기..."}
+          value={commentInput.value}
+          onChange={commentInput.onChange}
+        />
+      </Post>
+    </Wrapper>
   );
 };

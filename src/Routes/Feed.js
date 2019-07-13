@@ -53,6 +53,7 @@ export default () => {
         data.seeFeed.map(post => (
           <Post
             key={post.id}
+            id={post.id}
             location={post.location}
             caption={post.caption}
             likeCount={post.likeCount}

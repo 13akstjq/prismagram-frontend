@@ -24,6 +24,7 @@ const Wrapper = styled.div`
   align-items: center;
   /* margin: auto; */
   width: 100%;
+  min-height: 90vh;
   /* height: 100vh; */
 `;
 export default () => {

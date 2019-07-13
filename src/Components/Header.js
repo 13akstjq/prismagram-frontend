@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { gql } from "apollo-boost";
 import { Link, withRouter } from "react-router-dom";
-import { Logo, Compass, User, Heart } from "./Icons";
+import { Logo, Compass, User, HeartEmpty } from "./Icons";
 import Input from "./Input";
 import useInput from "../Hooks/useInput";
 import { useQuery } from "react-apollo-hooks";
@@ -78,7 +78,7 @@ export default withRouter(({ history }) => {
         </MenuItem>
         <MenuItem>
           <Link to="/notifications">
-            <Heart />
+            <HeartEmpty />
           </Link>
         </MenuItem>
         <MenuItem>

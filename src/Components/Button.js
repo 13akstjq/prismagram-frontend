@@ -7,8 +7,13 @@ const Container = styled.button`
   border-radius: ${props => props.theme.boxRadius};
   background-color: ${props => props.theme.blueColor};
   color: white;
+  cursor: pointer;
+  &:hover,
+  :focus {
+    outline: none;
+  }
+  padding: 6px 10px;
 `;
-
 
 const Button = ({ text }) => {
   return <Container>{text}</Container>;
