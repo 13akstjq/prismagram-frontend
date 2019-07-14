@@ -20,11 +20,11 @@ const QUERY = gql`
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   /* margin: auto; */
   width: 100%;
-  min-height: 90vh;
+  min-height: 70vh;
   /* height: 100vh; */
 `;
 export default () => {
@@ -33,15 +33,17 @@ export default () => {
   } = useQuery(QUERY);
   return (
     <ThemeProvider theme={Theme}>
-      <Wrapper>
-        <GlobalStyles />
-        <Router>
-          {isLoggedIn ? <Header /> : null}
-          <AppRouter isLoggedIn={isLoggedIn} />
-        </Router>
+      <>
+        <Wrapper>
+          <Router>
+            <GlobalStyles />
+            {isLoggedIn ? <Header /> : null}
+            <AppRouter isLoggedIn={isLoggedIn} />
+          </Router>
+          <ToastContainer position={"bottom-left"} />
+        </Wrapper>
         <Footer />
-        <ToastContainer position={"bottom-left"} />
-      </Wrapper>
+      </>
     </ThemeProvider>
   );
 };

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import Textarea from "react-textarea-autosize";
 import FatText from "../FatText";
 import Avatar from "../Avatar";
@@ -12,6 +13,9 @@ const Post = styled.div`
   ${props => props.theme.whiteBox};
   margin-top: 100px;
   width: 600px;
+  a {
+    color: inherit;
+  }
 `;
 
 const Files = styled.div`
@@ -122,7 +126,9 @@ export default ({
         <Header>
           <Avatar size={"sm"} url={avatar} />
           <UserColumn>
-            <FatText text={username} />
+            <Link to={`/${username}`}>
+              <FatText text={username} />
+            </Link>
             <Location>{location}</Location>
           </UserColumn>
         </Header>
