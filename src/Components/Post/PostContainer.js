@@ -51,7 +51,7 @@ const PostContainer = ({
   //   setIsLikedS(!isLikedS);
   // };
 
-  const toggleLike = () => {
+  const toggleLike = async () => {
     if (isLikedS === true) {
       setIsLikedS(false);
       setLikeCountS(likeCountS - 1);
@@ -59,7 +59,8 @@ const PostContainer = ({
       setIsLikedS(true);
       setLikeCountS(likeCountS + 1);
     }
-    toggleLikeMutation();
+    const result = await toggleLikeMutation();
+    console.log(result);
   };
   const onKeyPress = async e => {
     const { which } = e;

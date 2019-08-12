@@ -22,7 +22,8 @@ export default () => {
       email: email.value
     }
   });
-
+  console.log(useMutation);
+  console.log(requestSecretMutation);
   const createAccountMutation = useMutation(CREATE_ACCOUNT, {
     variables: {
       email: email.value,
@@ -47,9 +48,7 @@ export default () => {
       console.log(action);
       if (action === "logIn") {
         try {
-          const { data: requestSecret } = await requestSecretMutation(
-            email.value
-          ); // prisma에서 데이터를 받아오는 것은 비동기적으로 동작하기 떄문에 await필수
+          const { data: requestSecret } = await requestSecretMutation(); // prisma에서 데이터를 받아오는 것은 비동기적으로 동작하기 떄문에 await필수
           if (requestSecret) {
             toast.success("Check your email for your login secret");
             setTimeout(() => {
