@@ -61,7 +61,6 @@ const MetaList = styled.ul`
 `;
 
 export default ({ loading, data, logOut }) => {
-  console.log(data);
   if (loading) {
     return (
       <Wrapper>
@@ -70,8 +69,10 @@ export default ({ loading, data, logOut }) => {
     );
   }
   if (!loading && data && data.seeUser) {
-    console.log(data.seeUser.posts);
-    const { seeUser: user } = data;
+    const {
+      seeUser: { user }
+    } = data;
+    console.log(user);
     return (
       <Wrapper>
         <Header>
