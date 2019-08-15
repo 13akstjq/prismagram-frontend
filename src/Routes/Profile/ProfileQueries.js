@@ -19,8 +19,6 @@ export const SEE_USER = gql`
       postCount
       followingCount
       followerCount
-      isFollowing
-      isSelf
     }
   }
 `;

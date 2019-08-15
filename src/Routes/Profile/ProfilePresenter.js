@@ -61,6 +61,7 @@ const MetaList = styled.ul`
 `;
 
 export default ({ loading, data, logOut }) => {
+  console.log(data);
   if (loading) {
     return (
       <Wrapper>
