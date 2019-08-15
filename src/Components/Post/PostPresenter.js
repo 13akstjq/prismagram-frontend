@@ -11,7 +11,7 @@ const Wrapper = styled.div``;
 
 const Post = styled.div`
   ${props => props.theme.whiteBox};
-  margin-top: 100px;
+  margin-bottom: 100px;
   width: 600px;
   a {
     color: inherit;
@@ -24,6 +24,8 @@ const Files = styled.div`
 `;
 
 const File = styled.div`
+  background-position: center;
+  background-size: cover;
   position: absolute;
   width: 100%;
   height: 600px;
@@ -53,6 +55,13 @@ const Location = styled.div`
 const Meta = styled.div`
   display: flex;
   padding: 10px 5px;
+`;
+
+const Caption = styled.span`
+  padding: 5px 0;
+  padding-left: 16px;
+
+  font-weight: 600;
 `;
 
 const Button = styled.div`
@@ -98,7 +107,7 @@ const AutoSizeTextArea = styled(Textarea)`
 `;
 
 const LikeCount = styled.div`
-  padding: 7px 16px;
+  padding: 5px 16px;
   font-size: 14px;
 `;
 
@@ -155,6 +164,7 @@ export default ({
         <LikeCount>
           <FatText text={`${likeCount} Likes`} />
         </LikeCount>
+        <Caption>{caption}</Caption>
         <CommentList>
           {comments.map(comment => (
             <CommentItems key={comment.id}>

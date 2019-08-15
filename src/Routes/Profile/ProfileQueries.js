@@ -21,6 +21,7 @@ export const SEE_USER = gql`
         followingCount
         followerCount
         isSelf
+        isFollowing
       }
     }
   }

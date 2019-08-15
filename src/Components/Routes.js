@@ -3,7 +3,7 @@ import React from "react";
 import Feed from "../Routes/Feed";
 import Auth from "../Routes/Auth";
 import PropType from "prop-types";
-import Explore from "../Routes/Explore";
+import Explore from "../Routes/Explorer";
 import Search from "../Routes/Search";
 import Profile from "../Routes/Profile";
 import Notifications from "../Routes/Notifications";

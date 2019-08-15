@@ -23,6 +23,7 @@ const Container = styled.div`
   min-width: 300px;
   min-height: 300px;
   background-size: cover;
+  background-position: center;
   background-image: url(${props => props.url});
   &:hover {
     ${Overlay} {
