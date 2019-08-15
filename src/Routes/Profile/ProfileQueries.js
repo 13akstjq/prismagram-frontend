@@ -3,22 +3,24 @@ import { gql } from "apollo-boost";
 export const SEE_USER = gql`
   query seeUser($username: String!) {
     seeUser(username: $username) {
-      id
-      avatar
-      username
-      fullName
-      posts {
+      user {
         id
-        likeCount
-        commentCount
-        files {
+        avatar
+        username
+        fullName
+        posts {
           id
-          url
+          likeCount
+          commentCount
+          files {
+            id
+            url
+          }
         }
+        postCount
+        followingCount
+        followerCount
       }
-      postCount
-      followingCount
-      followerCount
     }
   }
 `;
