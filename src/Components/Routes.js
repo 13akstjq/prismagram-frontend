@@ -7,6 +7,8 @@ import Explore from "../Routes/Explorer";
 import Search from "../Routes/Search";
 import Profile from "../Routes/Profile";
 import Notifications from "../Routes/Notifications";
+import Private from "../Routes/Private";
+
 const LogedInRouter = () => (
   <Switch>
     <Route exact path="/" component={Feed} />
@@ -14,8 +16,10 @@ const LogedInRouter = () => (
     <Route path="/notifications" component={Notifications} />
     <Route path="/search" component={Search} />
     <Route path="/:username" component={Profile} />
+    <Route path="/private" exact component={Private} />
   </Switch>
 );
+
 const LogedOutRouter = () => (
   <>
     <Route exact path="/" component={Auth} />

@@ -59,7 +59,7 @@ export default () => {
           <Link>채용 정보</Link>
         </ListItem>
         <ListItem>
-          <Link>개인정보처리방침</Link>
+          <Link href="/private">개인정보처리방침</Link>
         </ListItem>
         <ListItem>
           <Link>약관</Link>
