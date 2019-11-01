@@ -1,13 +1,23 @@
 import React from "react";
 import styled from "styled-components";
+import { device } from "../Styles/Device";
 
 //Wrap
 const Wrap = styled.div`
+  height: 100px;
+  /* position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px; */
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 44px;
-  /* justify-content: center; */
+  @media ${device.tablet} {
+    max-width: 360px;
+    margin: auto;
+    flex-direction: column;
+    justify-content: space-around;
+  }
 `;
 
 //List
@@ -16,12 +26,12 @@ const List = styled.ul`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  height: 100px;
 `;
 
 //ListItem
 const ListItem = styled.li`
-  margin-right: 14px;
+  margin-right: 0.8em;
+  margin-bottom: 1em;
 `;
 
 //Link
@@ -34,7 +44,6 @@ const Link = styled.a`
 
 //Copyright
 const Copyright = styled.div`
-  margin-left: 130px;
   font-size: 12px;
   color: ${props => props.theme.greyColor};
 `;
@@ -44,7 +53,7 @@ export default () => {
     <Wrap>
       <List>
         <ListItem>
-          <Link>INSTAGRAM 정보</Link>
+          <Link>MANSTAGRAM 정보</Link>
         </ListItem>
         <ListItem>
           <Link>지원</Link>
@@ -77,7 +86,7 @@ export default () => {
           <Link>언어</Link>
         </ListItem>
       </List>
-      <Copyright>© 2019 INSTAGRAM</Copyright>
+      <Copyright>© 2019 MANSTAGRAM</Copyright>
     </Wrap>
   );
 };

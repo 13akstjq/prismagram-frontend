@@ -4,8 +4,11 @@ import { gql } from "apollo-boost";
 import { useQuery } from "react-apollo-hooks";
 import Loader from "../Components/Loader";
 import Post from "../Components/Post";
+import Theme from "../Styles/Theme";
 
 const Wrapper = styled.div`
+  min-height: 90vh;
+  ${Theme.router};
   display: flex;
   flex-direction: column;
   align-items: center;

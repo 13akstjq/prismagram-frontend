@@ -2,20 +2,31 @@ import React from "react";
 import styled from "styled-components";
 import Avatar from "../../Components/Avatar";
 import Loader from "../../Components/Loader";
-import FatText from "../../Components/FatText";
 import PostCard from "../../Components/PostCard";
 import Button from "../../Components/Button";
+import Theme from "../../Styles/Theme";
+import { device } from "../../Styles/Device";
 const Wrapper = styled.div`
-  width: 100%;
+  min-height: 90vh;
+  ${Theme.router};
+  width: 975px;
   height: 100%;
   display: flex;
   flex-direction: column;
+  @media (max-width: 975px) {
+    width: 100vw;
+  }
 `;
 
 const Header = styled.div`
   display: flex;
   justify-content: flex-start;
   margin-bottom: 50px;
+  height: 150px;
+
+  @media ${device.mobileL} {
+    /* height: 75px; */
+  }
 `;
 
 const HeaderColumn = styled.div`
@@ -24,7 +35,12 @@ const HeaderColumn = styled.div`
   justify-content: space-around;
 
   &:first-child {
-    margin: 0 100px;
+    margin: 0 10vw;
+  }
+  @media ${device.mobileL} {
+    &:first-child {
+      margin: 0 3vw;
+    }
   }
 `;
 
@@ -35,11 +51,31 @@ const HeaderList = styled.ul`
 const HeaderItem = styled.li`
   font-size: 16px;
   margin-right: 20px;
+  display: flex;
+  & > div {
+    margin-left: 0.3em;
+  }
+  @media ${device.mobileL} {
+    flex-direction: column;
+  }
 `;
 
 const PostContainer = styled.div`
+  padding: 1em;
+  margin: auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(0, 300px);
+  grid-template-columns: repeat(3, minmax(0px, 300px));
+  grid-gap: 20px;
+  margin-bottom: 30px;
+  @media (max-width: 940px) {
+    grid-auto-rows: 32vw;
+  }
+
+  @media (max-width: 900px) {
+    padding: 0;
+    grid-gap: 3px;
+  }
 `;
 const MetaItem = styled.li`
   opacity: 0.5;
@@ -58,9 +94,25 @@ const MetaList = styled.ul`
     border-top: 2px solid rgb(0, 0, 0, 1.2);
     opacity: 1;
   }
+  @media ${device.mobileL} {
+    margin-bottom: 0;
+  }
+`;
+
+const Text = styled.div`
+  font-size: 1em;
+`;
+
+const FatText = styled.div`
+  font-size: 1.5em;
+  font-weight: 500;
+  @media ${device.mobileL} {
+    font-size: 1.2em;
+  }
 `;
 
 export default ({ loading, data, logOut }) => {
+  console.log(window.screen.width);
   if (loading) {
     return (
       <Wrapper>
@@ -68,6 +120,7 @@ export default ({ loading, data, logOut }) => {
       </Wrapper>
     );
   }
+
   if (!loading && data && data.seeUser) {
     const {
       seeUser: { user }
@@ -77,12 +130,12 @@ export default ({ loading, data, logOut }) => {
       <Wrapper>
         <Header>
           <HeaderColumn>
-            <Avatar size="lg" url={user.avatar} />
+            <Avatar size={"lg"} url={user.avatar} />
           </HeaderColumn>
           <HeaderColumn>
             <HeaderList>
               <HeaderItem>
-                <FatText size="28" text={user.username} />
+                <FatText>{user.username}</FatText>
               </HeaderItem>
               {user.isSelf && (
                 <HeaderItem>
@@ -92,13 +145,13 @@ export default ({ loading, data, logOut }) => {
             </HeaderList>
             <HeaderList>
               <HeaderItem>
-                게시물 <FatText text={Number(user.postCount)} />
+                게시물 <Text>{user.postCount}</Text>
               </HeaderItem>
               <HeaderItem>
-                팔로워 <FatText text={Number(user.followerCount)} />
+                팔로워 <Text>{user.followerCount}</Text>
               </HeaderItem>
               <HeaderItem>
-                팔로잉 <FatText text={Number(user.followingCount)} />
+                팔로잉 <Text>{user.followingCount}</Text>
               </HeaderItem>
             </HeaderList>
             <HeaderList>

@@ -22,10 +22,8 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  /* margin: auto; */
   width: 100%;
-  min-height: 70vh;
-  /* height: 100vh; */
+  min-height: 100vh;
 `;
 export default () => {
   const {
@@ -41,8 +39,8 @@ export default () => {
             <AppRouter isLoggedIn={isLoggedIn} />
           </Router>
           <ToastContainer position={"bottom-left"} />
+          <Footer />
         </Wrapper>
-        <Footer />
       </>
     </ThemeProvider>
   );

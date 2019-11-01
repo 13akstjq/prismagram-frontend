@@ -10,6 +10,12 @@ export default withRouter(({ match: { params: { username } } }) => {
       username
     }
   });
+  let isMobile = window.screen.width < 425 ? true : false;
+  const changeAvatar = () => {
+    isMobile = window.screen.width < 425 ? true : false;
+  };
+
+  window.addEventListener("resize", changeAvatar);
   const logOut = useMutation(LOCAL_LOG_Out);
 
   return <ProfilePresenter logOut={logOut} data={data} loading={loading} />;

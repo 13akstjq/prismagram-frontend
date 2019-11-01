@@ -4,10 +4,11 @@ import { defaults, resolvers } from "./LocalState";
 console.log(process.env.NODE_ENV);
 
 export default new ApolloClient({
-  uri:
-    process.env.NODE_ENV === "development"
-      ? "http://localhost:4000"
-      : "https://manstagram-back.herokuapp.com/",
+  // uri:
+  //   process.env.NODE_ENV === "development"
+  //     ? "http://localhost:4000"
+  //     : "https://manstagram-back.herokuapp.com/",
+  uri: "https://manstagram-back.herokuapp.com/",
   clientState: {
     defaults,
     resolvers

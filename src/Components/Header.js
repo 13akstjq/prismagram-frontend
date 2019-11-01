@@ -6,6 +6,7 @@ import { Logo, Compass, User, HeartEmpty } from "./Icons";
 import Input from "./Input";
 import useInput from "../Hooks/useInput";
 import { useQuery } from "react-apollo-hooks";
+import { device } from "../Styles/Device";
 const HeaderWrapper = styled.div`
   ${props => props.theme.whiteBox};
   border: ${props => props.theme.boxBorder};
@@ -25,8 +26,15 @@ const HeaderWrapper = styled.div`
 const Home = styled.div``;
 
 const Search = styled.div`
+  min-width: 200px;
+
   input {
     text-align: center;
+    width: 100%;
+  }
+
+  @media ${device.mobileL} {
+    min-width: 150px;
   }
 `;
 
