@@ -6,15 +6,32 @@ import FatText from "../FatText";
 import Avatar from "../Avatar";
 import { HeartFull, HeartEmpty, CommentBubble, UploadCloud } from "../Icons";
 import Loader from "../Loader";
+import { device } from "../../Styles/Device";
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  width: 600px;
+  margin-bottom: 6em;
 
+  @media ${device.tablet} {
+    margin-bottom: 3em;
+  }
+
+  @media (max-width: 600px) {
+    width: 100vw;
+  }
+  @media ${device.mobileL} {
+    margin-bottom: 0;
+  }
+`;
 const Post = styled.div`
   ${props => props.theme.whiteBox};
-  margin-bottom: 100px;
-  width: 600px;
+
   a {
     color: inherit;
+  }
+
+  @media ${device.mobileL} {
+    border: none;
   }
 `;
 
@@ -36,7 +53,7 @@ const File = styled.div`
 
 const Header = styled.div`
   height: 60px;
-  width: 600px;
+  width: 100%;
   display: flex;
   align-items: center;
   padding: 16px;
@@ -59,7 +76,7 @@ const Meta = styled.div`
 
 const Caption = styled.span`
   padding: 5px 0;
-  padding-left: 16px;
+  padding-left: 1em;
 
   font-weight: 600;
 `;
@@ -73,7 +90,7 @@ const CommentList = styled.div``;
 const CommentItems = styled.div`
   position: relative;
   padding-top: 7px;
-  padding-left: 16px;
+  padding-left: 1em;
   width: 100%;
   display: flex;
   &:last-child {
@@ -107,8 +124,9 @@ const AutoSizeTextArea = styled(Textarea)`
 `;
 
 const LikeCount = styled.div`
-  padding: 5px 16px;
+  padding: 0.3em 1em;
   font-size: 14px;
+  margin-bottom: 0.5em;
 `;
 
 export default ({
@@ -162,7 +180,7 @@ export default ({
           </Button>
         </Meta>
         <LikeCount>
-          <FatText text={`${likeCount} Likes`} />
+          <FatText text={`좋아요 ${likeCount}개 `} />
         </LikeCount>
         <Caption>{caption}</Caption>
         <CommentList>
