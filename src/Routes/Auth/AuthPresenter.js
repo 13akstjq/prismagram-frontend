@@ -3,12 +3,23 @@ import styled from "styled-components";
 import Input from "../../Components/Input";
 import Button from "../../Components/Button";
 import whiteLogo from "../../assets/image/manstagram_white_logo.png";
+import mainImage from "../../assets/image/manstagram_mobile.png";
+
 const Wrapper = styled.div`
   height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
+
+const MainImage = styled.div`
+  background-image: ${props => `url(${props.url})`};
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 360px;
+  height: 700px;
+  margin-right: 2em;
 `;
 
 const Logo = styled.div`
@@ -41,6 +52,11 @@ const Box = styled.div`
       cursor: pointer;
     }
   }
+`;
+const FormContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const Form = styled(Box)`
@@ -112,82 +128,88 @@ export default ({
   //   console.log(action);
   return (
     <Wrapper>
-      <Form>
-        <Logo url={whiteLogo}></Logo>
-        {action === "logIn" && (
-          <form onSubmit={onSubmit}>
-            <Input placeholder={"휴대폰 번호 또는 이메일 주소"} {...email} />
-            <Button text={"로그인"} />
-          </form>
-        )}
-        {action === "signUp" && (
-          <>
-            <SignUpText>
-              친구들의 사진을 보고싶다면
-              <br /> 회원가입하세요!
-            </SignUpText>
+      <MainImage url={mainImage}></MainImage>
+      <FormContainer>
+        <Form>
+          <Logo url={whiteLogo}></Logo>
+          {action === "logIn" && (
             <form onSubmit={onSubmit}>
               <Input placeholder={"휴대폰 번호 또는 이메일 주소"} {...email} />
-              <Input placeholder={"성"} {...lastName} />
-              <Input placeholder={"이름"} {...firstName} />
-              <Input placeholder={"사용자 이름"} {...username} />
-              <Button text={"가입"} />
-              <Help>
-                가입하면 Manstagram의{" "}
-                <Link
-                  target="_blank"
-                  href="https://help.instagram.com/581066165581870"
-                >
-                  약관
-                </Link>
-                ,{" "}
-                <Link
-                  target="_blank"
-                  href="https://help.instagram.com/519522125107875"
-                >
-                  데이터 정책
-                </Link>{" "}
-                및{" "}
-                <Link
-                  target="_blank"
-                  href="https://help.instagram.com/1896641480634370?ref=ig"
-                >
-                  쿠키 정책
-                </Link>
-                에 동의하게 됩니다.
-              </Help>
+              <Button text={"로그인"} />
             </form>
-          </>
-        )}
-        {action === "confirm" && (
-          <form onSubmit={onSubmit}>
-            <Input placeholder={"paste your secret"} required {...secret} />
-            <Button text={"확인"} />
-          </form>
-        )}
-      </Form>
+          )}
+          {action === "signUp" && (
+            <>
+              <SignUpText>
+                친구들의 사진을 보고싶다면
+                <br /> 회원가입하세요!
+              </SignUpText>
+              <form onSubmit={onSubmit}>
+                <Input
+                  placeholder={"휴대폰 번호 또는 이메일 주소"}
+                  {...email}
+                />
+                <Input placeholder={"성"} {...lastName} />
+                <Input placeholder={"이름"} {...firstName} />
+                <Input placeholder={"사용자 이름"} {...username} />
+                <Button text={"가입"} />
+                <Help>
+                  가입하면 Manstagram의{" "}
+                  <Link
+                    target="_blank"
+                    href="https://help.instagram.com/581066165581870"
+                  >
+                    약관
+                  </Link>
+                  ,{" "}
+                  <Link
+                    target="_blank"
+                    href="https://help.instagram.com/519522125107875"
+                  >
+                    데이터 정책
+                  </Link>{" "}
+                  및{" "}
+                  <Link
+                    target="_blank"
+                    href="https://help.instagram.com/1896641480634370?ref=ig"
+                  >
+                    쿠키 정책
+                  </Link>
+                  에 동의하게 됩니다.
+                </Help>
+              </form>
+            </>
+          )}
+          {action === "confirm" && (
+            <form onSubmit={onSubmit}>
+              <Input placeholder={"paste your secret"} required {...secret} />
+              <Button text={"확인"} />
+            </form>
+          )}
+        </Form>
 
-      {action === "logIn" && (
-        <StateChanger>
-          계정이 없으신가요?{" "}
-          <StateLink onClick={() => setAction("signUp")}>가입하기</StateLink>
-        </StateChanger>
-      )}
-      {action === "signUp" && (
-        <StateChanger>
-          계정이 있으신가요?{" "}
-          <StateLink onClick={() => setAction("logIn")}>로그인</StateLink>
-        </StateChanger>
-      )}
-      <AppContainer>
-        <AppText>앱을 다운로드 받아보세요.</AppText>
-        <a
-          target="blank"
-          href="https://play.google.com/store/apps/details?id=com.manstagram2.mansub&hl=ko"
-        >
-          <PlayStoreIcon></PlayStoreIcon>
-        </a>
-      </AppContainer>
+        {action === "logIn" && (
+          <StateChanger>
+            계정이 없으신가요?{" "}
+            <StateLink onClick={() => setAction("signUp")}>가입하기</StateLink>
+          </StateChanger>
+        )}
+        {action === "signUp" && (
+          <StateChanger>
+            계정이 있으신가요?{" "}
+            <StateLink onClick={() => setAction("logIn")}>로그인</StateLink>
+          </StateChanger>
+        )}
+        <AppContainer>
+          <AppText>앱을 다운로드 받아보세요.</AppText>
+          <a
+            target="blank"
+            href="https://play.google.com/store/apps/details?id=com.manstagram2.mansub&hl=ko"
+          >
+            <PlayStoreIcon></PlayStoreIcon>
+          </a>
+        </AppContainer>
+      </FormContainer>
     </Wrapper>
   );
 };

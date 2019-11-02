@@ -31,7 +31,9 @@ const List = styled.ul`
 //ListItem
 const ListItem = styled.li`
   margin-right: 0.8em;
-  margin-bottom: 1em;
+  @media ${device.tablet} {
+    margin-bottom: 1em;
+  }
 `;
 
 //Link
