@@ -2,13 +2,22 @@ import React from "react";
 import styled from "styled-components";
 import Input from "../../Components/Input";
 import Button from "../../Components/Button";
-
+import whiteLogo from "../../assets/image/manstagram_white_logo.png";
 const Wrapper = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
+
+const Logo = styled.div`
+  background-image: ${props => `url(${props.url})`};
+  background-position: center;
+  background-size: 180px 60px;
+  width: 180px;
+  height: 60px;
+  margin-bottom: 2em;
 `;
 
 const Box = styled.div`
@@ -35,11 +44,16 @@ const Box = styled.div`
 `;
 
 const Form = styled(Box)`
-  padding: 40px;
+  padding: 40px 30px;
+  padding-top: 20px;
   padding-bottom: 28px;
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
+  align-items: center;
+  form {
+    width: 100%;
+  }
 `;
 
 const SignUpText = styled.div`
@@ -50,6 +64,7 @@ const SignUpText = styled.div`
 `;
 
 const StateChanger = styled(Box)`
+  text-align: center;
   padding: 20px 80px;
 `;
 
@@ -98,6 +113,7 @@ export default ({
   return (
     <Wrapper>
       <Form>
+        <Logo url={whiteLogo}></Logo>
         {action === "logIn" && (
           <form onSubmit={onSubmit}>
             <Input placeholder={"휴대폰 번호 또는 이메일 주소"} {...email} />
