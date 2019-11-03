@@ -20,8 +20,8 @@ const MainImage = styled.div`
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  width: 360px;
   height: 700px;
+  width: 360px;
   margin-right: 2em;
   @media ${device.tablet} {
     display: none;
