@@ -4,12 +4,15 @@ import Input from "../../Components/Input";
 import Button from "../../Components/Button";
 import whiteLogo from "../../assets/image/manstagram_white_logo.png";
 import mainImage from "../../assets/image/manstagram_mobile.png";
+import { device } from "../../Styles/Device";
 
 const Wrapper = styled.div`
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  @media ${device.tablet} {
+  }
 `;
 
 const MainImage = styled.div`
@@ -20,6 +23,9 @@ const MainImage = styled.div`
   width: 360px;
   height: 700px;
   margin-right: 2em;
+  @media ${device.tablet} {
+    display: none;
+  }
 `;
 
 const Logo = styled.div`
